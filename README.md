@@ -76,3 +76,13 @@ Beyond that, IronCoin does not transmit any data back to their own servers, or r
 # How Can I Add/Remove Sites From The List?
 
 If you've discovered a site that should be added or removed from our list, please open up an issue on GitHub for us to review.
+
+# Licensing and Attribution:
+
+IronCoin contains open source code from SegaSec and WarpDesign. Those components are released under ISC and MIT licenses respectively by those parties.
+
+Portions of our list have been provided by BlurpSec of MyCrypto, Etherscam Database, by Mitchellkrogza's Phishing Database, and the moderation teams at /r/cryptocurrency and /r/ethtrader.
+
+# Disclaimer:
+
+The views, code and goals within this project are those of individual contributors and should not be considered to be a reflection of the views of their employers. No work herein is endorsed by the employer of any individual and all contributions have been done independently.
