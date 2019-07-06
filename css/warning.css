@@ -1,0 +1,294 @@
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-black-webfont.eot');
+    src: url('../font/titilliumweb-black-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-black-webfont.svg#titillium_webblack') format('svg'),
+    url('../font/titilliumweb-black-webfont.woff') format('woff'),
+    url('../font/titilliumweb-black-webfont.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-bold-webfont.eot');
+    src: url('../font/titilliumweb-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-bold-webfont.svg#titillium_webbold') format('svg'),
+    url('../font/titilliumweb-bold-webfont.woff') format('woff'),
+    url('../font/titilliumweb-bold-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-bolditalic-webfont.eot');
+    src: url('../font/titilliumweb-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-bolditalic-webfont.svg#titillium_webbold_italic') format('svg'),
+    url('../font/titilliumweb-bolditalic-webfont.woff') format('woff'),
+    url('../font/titilliumweb-bolditalic-webfont.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-extralight-webfont.eot');
+    src: url('../font/titilliumweb-extralight-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-extralight-webfont.svg#titillium_webthin') format('svg'),
+    url('../font/titilliumweb-extralight-webfont.woff') format('woff'),
+    url('../font/titilliumweb-extralight-webfont.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-extralightitalic-webfont.eot');
+    src: url('../font/titilliumweb-extralightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-extralightitalic-webfont.svg#titillium_webthin_italic') format('svg'),
+    url('../font/titilliumweb-extralightitalic-webfont.woff') format('woff'),
+    url('../font/titilliumweb-extralightitalic-webfont.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-italic-webfont.eot');
+    src: url('../font/titilliumweb-italic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-italic-webfont.svg#titillium_webitalic') format('svg'),
+    url('../font/titilliumweb-italic-webfont.woff') format('woff'),
+    url('../font/titilliumweb-italic-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-light-webfont.eot');
+    src: url('../font/titilliumweb-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-light-webfont.svg#titillium_weblight') format('svg'),
+    url('../font/titilliumweb-light-webfont.woff') format('woff'),
+    url('../font/titilliumweb-light-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-lightitalic-webfont.eot');
+    src: url('../font/titilliumweb-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-lightitalic-webfont.svg#titillium_weblight_italic') format('svg'),
+    url('../font/titilliumweb-lightitalic-webfont.woff') format('woff'),
+    url('../font/titilliumweb-lightitalic-webfont.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-regular-webfont.eot');
+    src: url('../font/titilliumweb-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-regular-webfont.svg#titillium_webregular') format('svg'),
+    url('../font/titilliumweb-regular-webfont.woff') format('woff'),
+    url('../font/titilliumweb-regular-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-semibold-webfont.eot');
+    src: url('../font/titilliumweb-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-semibold-webfont.svg#titillium_websemibold') format('svg'),
+    url('../font/titilliumweb-semibold-webfont.woff') format('woff'),
+    url('../font/titilliumweb-semibold-webfont.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'warning';
+    src: url('../font/warning.eot?48993526');
+    src: url('../font/warning.eot?48993526#iefix') format('embedded-opentype'),
+    url('../font/warning.woff2?48993526') format('woff2'),
+    url('../font/warning.woff?48993526') format('woff'),
+    url('../font/warning.ttf?48993526') format('truetype'),
+    url('../font/warning.svg?48993526#warning') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*
+        temporary style for error page - the red one
+ */
+
+#iron-warning #errorPageContainer {
+    font-size: 20px;
+}
+
+#iron-warning {
+    background-color: #A4000F;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 40px 48px;
+    align-items: center;
+    justify-content: center;
+}
+
+#errorShortDescText_phishing {
+    font-size: 15px;
+    max-width: 720px;
+}
+
+#errorShortDesc {
+    line-height: 40px;
+}
+
+#goBackButton {
+    line-height: 40px;
+    width: 100px;
+    height: 40px;
+    color: black;
+    opacity: 1;
+    background-color: white;
+    font-size: 15px;
+    margin-right: 10px;
+    text-decoration: none;
+    text-align: center;
+    float: right;
+}
+
+#seeDetailsButton {
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: transparent;
+    font-size: 15px;
+    text-align: center;
+    float: right;
+    border: white solid 0.4px;
+}
+
+#seeDetailsButton:hover {
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: #5a0002;
+    font-size: 15px;
+    font-weight: normal;
+    text-align: center;
+    border: white solid 0.4px;
+}
+
+#goBackButton:hover {
+    line-height: 40px;
+    width: 100px;
+    height: 40px;
+    opacity: 0.8;
+    color: black;
+    background-color: white;
+    font-size: 15px;
+    text-align: center;
+}
+
+#goBackButton:active {
+    background-color: white;
+    opacity: 0.7;
+}
+
+#errorDescriptionContainer {
+    background-color: white;
+    position: absolute;
+    margin: 48px auto;
+    color: black;
+    padding: 20px;
+    width: 700px;
+    height: 74px;
+    font-size: 15px;
+}
+
+#iron-icon {
+    position: absolute;
+    top: 17%;
+    left: 20%;
+    height: 40px;
+    width: 40px;
+}
+
+@media only screen and (max-width: 480px) {
+    .button-container button, .button-container #goBackButton, #seeDetailsButton {
+        display: block;
+        width: 100%;
+        margin: 0.66em 0 0;
+    }
+
+    .button-container button, .button-container #goBackButton:hover, #seeDetailsButton:hover {
+        display: block;
+        width: 100%;
+        margin: 0.66em 0 0;
+    }
+
+    #errorDescriptionContainer {
+        position: absolute;
+        margin: 114px 20px 0 20px;
+        padding: 20px;
+        width: 200px;
+        height: 115px;
+    }
+
+    #phishing_error_desc_override {
+        margin: 0;
+    }
+
+    #errorTitle.title {
+        margin-left: 0 !important;
+    }
+
+    #iron-warning {
+
+        justify-content: unset;
+
+        padding: 75px 20px 75px 75px;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #iron-warning {
+        justify-content: unset;
+        padding: 75px 20px 0;
+    }
+
+    #iron-warning .title-text {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+#iron-warning .title {
+    background: url(../icons/rsz_ironsecicon_white.png) no-repeat;
+    background-size: 40px;
+    padding-left: 62px;
+    margin-left: -62px;
+
+}
+
+#ignore_warning_link {
+    cursor: pointer;
+    color: #0000FF;
+    text-decoration: underline;
+}

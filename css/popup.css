@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-extralight-webfont.eot');
+    src: url('../font/titilliumweb-extralight-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-extralight-webfont.svg#titillium_webthin') format('svg'),
+    url('../font/titilliumweb-extralight-webfont.woff') format('woff'),
+    url('../font/titilliumweb-extralight-webfont.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    src: url('../font/titilliumweb-extralightitalic-webfont.eot');
+    src: url('../font/titilliumweb-extralightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/titilliumweb-extralightitalic-webfont.svg#titillium_webthin_italic') format('svg'),
+    url('../font/titilliumweb-extralightitalic-webfont.woff') format('woff'),
+    url('../font/titilliumweb-extralightitalic-webfont.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+
+}
+
+#ironBody {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background: #FFFFFF;
+    margin: 0;
+    font-family: 'Titillium Web', Helvetica, sans-serif;
+}
+
+#iron-head {
+    border: #f2f2ed;
+    height: 80px;
+    line-height: 80px;
+
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    color: rgba(10, 23, 23, 0.7);
+    font-weight: lighter;
+    font-size: 20px;
+    background-color: #f2f2ed
+}
+
+#iron-beta {
+    position: absolute;
+    transform: rotate(-42deg);
+    top: 10px;
+    font-size: 15px;
+    left: 5px;
+    z-index: 3000;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#iron-triangleBeta::before {
+    border-width: 2.35em;
+    border-left-color: #FFFFFF;
+    border-top-color: #FFFFFF;
+    z-index: 5;
+}
+
+#iron-triangleBeta::before,
+#iron-triangleBeta::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+#iron-triangleBeta::before {
+    border-width: 2.35em;
+    border-left-color: #31dc86;
+    border-top-color: #31dc86;
+}
+
+#blackListNum {
+    /* box-shadow: 1px 1px 10px rgba(255,140,5,0.7); */
+    margin: 15px 0 0 0;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: #8f9b92;
+}
+
+#iron-infoDiv {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 95px;
+    text-align: center;
+    /* box-shadow: 0 0 5px rgba(255, 140,0,0.5); */
+    color: rgba(10, 23, 23, 0.7);
+    font-weight: lighter;
+    font-size: 12px;
+    background-color: #f2f2ed;
+    line-height: 140px;
+    outline: none;
+}
+
+.iron-link {
+    color: #659ac9;
+    display: inline-block;
+    text-decoration: none;
+    position: relative;
+    width: 80px;
+    text-align: center;
+    outline: none;
+
+}
+
+#iron-privacyIcon:before, #iron-icon:before, #iron-githubIcon:before {
+
+    bottom: 16px;
+    position: absolute;
+    outline: none;
+
+}
+
+#iron-icon:before {
+    content: url(../assets/iconIronsec.png);
+}
+
+#iron-privacyIcon:before {
+    content: url(../assets/iconPrivacy.png);
+    text-decoration: none;
+}
+
+#iron-githubIcon:before {
+    content: url(../assets/iconGitHub.png);
+}
+
+.iron-link:hover {
+    text-decoration: none;
+    color: #000;
+    outline: none;
+}
+
+#small {
+    font-size: 11px;
+    text-align: center;
+    color: #C2C6CD;
+}

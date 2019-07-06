@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=“viewport” content=“user-scalable=no, width=device-width”>
+    <title>IronCoin Anti Phishing</title>
+    <link rel="stylesheet" href="../css/warning.css" type="text/css"/>
+
+</head>
+<body id="iron-warning">
+
+<div id="errorPageContainer" class="container">
+    <div id="errorTitle" class="title">
+        <h1 class="title-text" id="errorTitleText_phishing">Warning Blacklisted Site</h1>
+    </div>
+
+    <div id="errorLongContent">
+        <div id="errorShortDesc">
+            <p id="errorShortDescText_phishing">IronCoin has blacklisted this page has it has been reported as a deceptive site. This site may be a phising site, a hijacked site, or another type of malicious site that is attempting to gain access to usernames, password or private keys. It may also have been detected trying to exploit unlocked Web3Js wallets.</p>
+			<p>If you choose to proceed, you should do so with caution. Double check the URL and SSL certificates.</p>
+        </div>
+
+        <div id="advisoryDesc">
+            <p id="advisoryDescText">Blocked by IronCoin Anti Phishing Extension.</p>
+        </div>
+
+        <div id="buttons" class="button-container">
+            <button id="seeDetailsButton">See details</button>
+            <a id="goBackButton">Go back</a>
+        </div>
+    </div>
+
+
+    <div id="errorDescriptionContainer" hidden>
+        <div class="error-description" id="errorLongDesc_phishing">
+            <p id="phishing_error_desc_override"><span id="phishing_sitename"></span> has been reported as a phishing
+                site. If you feel this domain is not a high risk site, you can <a id="report_detection">report
+                    a detection problem</a>
+                or <a id="ignore_warning_link">ignore the risk</a> and go to this
+                unsafe site.</p>
+        </div>
+    </div>
+
+</div>
+<script src="../jquery/jquery-3.3.1.min.js"></script>
+<script src="../js/warning.js"></script>
+<script src="../js/googleAnalytics.js"></script>
+</body>
+</html>
