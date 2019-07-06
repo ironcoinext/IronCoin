@@ -12,7 +12,7 @@ IronCoin sits in your web browser as an extension, it loads Javascript to detect
 
 We'll also send real time alerts of major security news in the cryptocurrency space, such as exchange hacking or 0-day exploits.
 
-#What We Block Right Now:
+# What We Block Right Now:
 
 1. Phishing Domains
 2. Puny Code Domains.
@@ -38,7 +38,7 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 * Add support to detect and block clipboard hijacking and manipulation.
 * Add ML for detecting new scam sites based on common behavior.
 
-#Who Created IronCoin?
+# Who Created IronCoin?
 [Redditor AdamSC1](https://old.reddit.com/user/AdamSC1/) who is a moderator of Reddit's [/r/cryptocurrency](http://old.reddit.com/r/cryptocurrency) and [/r/EthTrader](http://old.reddit.com/r/ethtrader). These subreddits have had more than 10M+ unique monthly visitors at their peak, and are often innundated with crypto scams. While the teams use manual moderation and tools like Reddit's AutoMod to keep scams at bay, Adam wanted to find a way to extend user protection across the web.
 
 # What Permissions Does IronCoin's Extension Need?
