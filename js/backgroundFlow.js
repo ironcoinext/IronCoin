@@ -104,6 +104,13 @@ function isDomain() {
     const currentDomain = getDomainFromFullURL(currentTabURL);
     allDomains = JSON.parse(localStorage.getItem('iron_blacklist_domains')).domains;
     return allDomains.some(function (domain) {
+
+        if(currentDomain === domain){
+          console.log('Domain has cleanly matched this blocked domain: ' + domain)
+        }
+        if(currentDomain.endsWith('.' + domain)){
+          console.log('Domain is a subdomain of this blocked domain: ' + domain)
+        }
         return currentDomain === domain || currentDomain.endsWith('.' + domain);
     });
 }
@@ -178,6 +185,13 @@ browser.webRequest.onBeforeRequest.addListener(
             return;
           }
           if ((isDomain() || isUrl()) && !ignoreRiskPressed) {
+            if(isDomain()){
+              console.log('The URL has matched a blocked domain')
+            }
+            if(isUrl()){
+              console.log('The URL has matched a blocked url');
+            }
+
             const tabDomain = tabs[tabId].prevTab;
             const lastUrl = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
               '&ref=' + tabDomain;
