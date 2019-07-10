@@ -5,6 +5,7 @@ reportGA
 //Grab resource lists from hosted repo
 const resourceDomain = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-domains.json';
 const resourceUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-urls.json';
+const affiliatesJsonUrl = 'https://raw.githubusercontent.com/mayeaux/IronCoin/master/affiliates.json';
 const browser = getBrowser();
 const updateTimeOfLocalStorage = 300000;
 const tabs = {};
@@ -40,6 +41,31 @@ function setDomainUpdate() {
     const lastUpdate = new Date();
     localStorage.setItem('iron_lastUpdate', lastUpdate.toUTCString());
 }
+
+let affiliatesData;
+
+function getaffiliatesJSON(){
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 0) {
+
+        affiliatesData = JSON.parse(xhr.responseText);
+      }
+    };
+
+    xhr.open('GET', affiliatesJsonUrl, true);
+    xhr.send(null);
+    xhr.timeout = 4000;
+
+    xhr.ontimeout = () => {
+      reject(false);
+    };
+  });
+}
+
+getaffiliatesJSON();
+setInterval(getaffiliatesJSON, 1000 * 60 * 5);
 
 function isFeedUpdated(reqInfo) {
     return new Promise((resolve, reject) => {
@@ -269,10 +295,18 @@ window.onbeforeunload = function () {
     return null;
 };
 
+// initiate localStorage if it doesn't exist
+if(localStorage.getItem('refTimes') == null){
+  localStorage.setItem('reftimes', '{}');
+}
+
+
 const msPerDay = 1000 * 60 * 60 * 24;
 
 function needToAttachRefQueryVar(domain){
   let storedObject = JSON.parse(localStorage.getItem('reftimes'));
+
+  console.log(storedObject);
 
   // current time as utc timestamp
   const currentTime = (new Date()).getTime();
@@ -334,6 +368,11 @@ browser.webRequest.onBeforeRequest.addListener(
         // if the domain matches redirect
         if(newTrimmedUrl == domain){
           // TODO: add the check here for whether a redirect has been done the last 24h, if it has just ignore
+
+          const shouldAttachRefQuery = needToAttachRefQueryVar(domain);
+
+          console.log(affiliatesData[0]);
+          console.log(shouldAttachRefQuery);
 
           return {
             redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl)}`
