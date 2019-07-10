@@ -391,7 +391,7 @@ browser.webRequest.onBeforeRequest.addListener(
 
                 // TODO: refactor
                 if(alreadyContainsQuestionMark){
-                  stringToAttach = `${queryVar}=${refCode}`
+                  stringToAttach = `&${queryVar}=${refCode}`
                 } else {
                   stringToAttach = `?${queryVar}=${refCode}`
                 }
