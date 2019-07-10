@@ -298,6 +298,8 @@ window.onbeforeunload = function () {
 // initiate localStorage if it doesn't exist
 if(localStorage.getItem('refTimes') == null){
   localStorage.setItem('reftimes', '{}');
+} else {
+ console.log(JSON.parse(localStorage.getItem('refTimes')))
 }
 
 
@@ -313,6 +315,8 @@ function needToAttachRefQueryVar(domain){
 
   // if that domain has nothing for ref saved item time, redirect with ref and
   if(!storedObject[domain]){
+
+
     storedObject[domain] =  currentTime;
     localStorage.setItem('reftimes', JSON.stringify(storedObject));
     return true
@@ -367,16 +371,19 @@ browser.webRequest.onBeforeRequest.addListener(
 
         // if the domain matches redirect
         if(newTrimmedUrl == domain){
-          // TODO: add the check here for whether a redirect has been done the last 24h, if it has just ignore
 
+          // check if ref query should be attached
           const shouldAttachRefQuery = needToAttachRefQueryVar(domain);
 
-          console.log(affiliatesData[0]);
-          console.log(shouldAttachRefQuery);
+          if(shouldAttachRefQuery){
+            console.log('ATTACH QUERY');
+            const requestedUrlWithQuery = requestDetails.url;
+            return { redirectUrl : requestedUrlWithQuery }
+          } else {
+            console.log('DONT ATTACH QUERY');
+            return { redirectUrl : requestDetails.url }
+          }
 
-          return {
-            redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl)}`
-          };
         };
       }
 
