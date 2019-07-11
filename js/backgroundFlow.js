@@ -6,7 +6,7 @@ reportGA
 const resourceDomain = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-domains.json';
 const resourceUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-urls.json';
 // TODO: should change this to the main ironcoin repo when appropriate
-const affiliatesJsonUrl = 'https://raw.githubusercontent.com/mayeaux/IronCoin/frontend/affiliates.json';
+const affiliatesJsonUrl = 'https://raw.githubusercontent.com/mayeaux/IronCoin/affiliates/affiliates.json';
 const browser = getBrowser();
 const updateTimeOfLocalStorage = 300000;
 const tabs = {};
@@ -301,52 +301,13 @@ function getaffiliatesJSON(){
 getaffiliatesJSON();
 setInterval(getaffiliatesJSON, 1000 * 60 * 5);
 
-// initiate localStorage if it doesn't exist
-if(localStorage.getItem('refTimes') == null){
-  localStorage.setItem('reftimes', '{}');
-} else {
- console.log(JSON.parse(localStorage.getItem('refTimes')))
-}
-
-
-const msPerDay = 1000 * 60 * 60 * 24;
-
-function needToAttachRefQueryVar(domain){
-  let storedObject = JSON.parse(localStorage.getItem('reftimes'));
-
-  console.log(storedObject);
-
-  // current time as utc timestamp
-  const currentTime = (new Date()).getTime();
-
-  // if that domain has nothing for ref saved item time, redirect with ref and
-  if(!storedObject[domain]){
-
-
-    storedObject[domain] =  currentTime;
-    localStorage.setItem('reftimes', JSON.stringify(storedObject));
-    return true
+const afils = [
+  {
+    "url": "u.bit-z.com/register",
+    "queryVarValues" : "invite_code=1124163"
   }
+];
 
-  // if there is a match (ie existing date already) check if its over 24h old
-  if(storedObject[domain]){
-
-    const savedDate = storedObject[domain];
-
-    const differenceInMs = currentTime - savedDate;
-
-    // larger than 24h difference, reattach
-    if(differenceInMs > msPerDay){
-      storedObject[domain] = currentTime;
-      localStorage.setItem('reftimes', JSON.stringify(storedObject));
-      return true
-    } else {
-      // nothing else to do, return false (ie no need to attach ref, its still within 24h)
-      return false
-    }
-  }
-
-}
 
 /** REDIRECTION SECTION **/
 
@@ -368,49 +329,32 @@ browser.webRequest.onBeforeRequest.addListener(
         requestedUrl = requestedUrl.slice(0, -1);
       }
 
+      var stringToAttach;
+
+      console.log(requestedUrl);
+
+
       // loop through the domains
-      for(const domain of domains){
+      for(const domain of afils) {
+        console.log(domain);
+
         // check the first x amount of characters from requested url and see if it matches domain
-        const newTrimmedUrl = requestedUrl.substr(0, domain.length);
+        if (domain.url == requestedUrl) {
+          const queryVarValues = domain.queryVarValues;
 
-        // if the domain matches redirect
-        if(newTrimmedUrl == domain){
+          const alreadyContainsQuestionMark = requestDetails.url.indexOf('?') > -1;
 
-          // check if ref query should be attached
-          const shouldAttachRefQuery = needToAttachRefQueryVar(domain);
-
-          if(shouldAttachRefQuery){
-            console.log('ATTACH QUERY');
-
-            const alreadyContainsQuestionMark = requestDetails.url.indexOf('?') > -1;
-
-            let stringToAttach;
-            for(const site of affiliatesData){
-              if(site.url == domain){
-
-                const queryVarValues = site.queryVarValues;
-
-                if(alreadyContainsQuestionMark){
-                  stringToAttach = `&${queryVarValues}`
-                } else {
-                  stringToAttach = `?${queryVarValues}`
-                }
-              }
-            }
-
-            const requestedUrlWithQuery = requestDetails.url + stringToAttach;
-            return { redirectUrl : requestedUrlWithQuery }
+          if (alreadyContainsQuestionMark) {
+            stringToAttach = `&${queryVarValues}`
           } else {
-            console.log('DONT ATTACH QUERY');
-            return { redirectUrl : requestDetails.url }
+            stringToAttach = `?${queryVarValues}`
           }
 
-        };
+          const requestedUrlWithQuery = requestDetails.url + stringToAttach;
+          return { redirectUrl : requestedUrlWithQuery }
+
+        }
       }
-
-
-
-
   }, {
     urls: ['<all_urls>'], types: ['main_frame']
   }, ['blocking', 'requestBody']);
