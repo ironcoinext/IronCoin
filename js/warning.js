@@ -37,15 +37,19 @@ $('document').ready(function () {
 
             let seeDetButton = document.getElementById('seeDetailsButton');
 
-            seeDetButton.addEventListener('click', function (event) {
-                let setting = document.getElementById('errorDescriptionContainer');
-                setting.hidden = !setting.hidden;
-                if (!setting.hidden) {
-                    document.getElementById('errorLongDesc_phishing').scrollIntoView();
-                    addLinksToText(result);
-                }
-                trackButtonClick('Buttons', 'click', event);
-            });
+          addLinksToText(result);
+
+
+
+            // seeDetButton.addEventListener('click', function (event) {
+            //     let setting = document.getElementById('errorDescriptionContainer');
+            //     setting.hidden = !setting.hidden;
+            //     if (!setting.hidden) {
+            //         document.getElementById('errorLongDesc_phishing').scrollIntoView();
+            //         addLinksToText(result);
+            //     }
+            //     trackButtonClick('Buttons', 'click', event);
+            // });
         }
     }
 
