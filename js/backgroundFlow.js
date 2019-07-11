@@ -104,6 +104,13 @@ function isDomain() {
     const currentDomain = getDomainFromFullURL(currentTabURL);
     allDomains = JSON.parse(localStorage.getItem('iron_blacklist_domains')).domains;
     return allDomains.some(function (domain) {
+
+        if(currentDomain === domain){
+          console.log('Domain has cleanly matched this blocked domain: ' + domain)
+        }
+        if(currentDomain.endsWith('.' + domain)){
+          console.log('Domain is a subdomain of this blocked domain: ' + domain)
+        }
         return currentDomain === domain || currentDomain.endsWith('.' + domain);
     });
 }
@@ -178,6 +185,13 @@ browser.webRequest.onBeforeRequest.addListener(
             return;
           }
           if ((isDomain() || isUrl()) && !ignoreRiskPressed) {
+            if(isDomain()){
+              console.log('The URL has matched a blocked domain')
+            }
+            if(isUrl()){
+              console.log('The URL has matched a blocked url');
+            }
+
             const tabDomain = tabs[tabId].prevTab;
             const lastUrl = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
               '&ref=' + tabDomain;
@@ -255,6 +269,40 @@ window.onbeforeunload = function () {
     return null;
 };
 
+const msPerDay = 1000 * 60 * 60 * 24;
+
+function needToAttachRefQueryVar(domain){
+  let storedObject = JSON.parse(localStorage.getItem('reftimes'));
+
+  // current time as utc timestamp
+  const currentTime = (new Date()).getTime();
+
+  // if that domain has nothing for ref saved item time, redirect with ref and
+  if(!storedObject[domain]){
+    storedObject[domain] =  currentTime;
+    localStorage.setItem('reftimes', JSON.stringify(storedObject));
+    return true
+  }
+
+  // if there is a match (ie existing date already) check if its over 24h old
+  if(storedObject[domain]){
+
+    const savedDate = storedObject[domain];
+
+    const differenceInMs = currentTime - savedDate;
+
+    // larger than 24h difference, reattach
+    if(differenceInMs > msPerDay){
+      storedObject[domain] = currentTime;
+      localStorage.setItem('reftimes', JSON.stringify(storedObject));
+      return true
+    } else {
+      // nothing else to do, return false (ie no need to attach ref, its still within 24h)
+      return false
+    }
+  }
+
+}
 
 /** REDIRECTION SECTION **/
 
@@ -285,6 +333,8 @@ browser.webRequest.onBeforeRequest.addListener(
 
         // if the domain matches redirect
         if(newTrimmedUrl == domain){
+          // TODO: add the check here for whether a redirect has been done the last 24h, if it has just ignore
+
           return {
             redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl)}`
           };
