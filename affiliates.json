@@ -5,97 +5,78 @@
   },
   {
     "url": "kucoin.com",
-    "referralCode" : "1rxb2",
-    "queryVar" : "r"
+    "queryVarValues" : "r=1rxb2"
   },
   {
     "url": "coinbene.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "type=invitation&id=56214158"
   },
   {
     "url": "zbg.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "recommendCode=N25uWXVJNzdtSGc="
   },
   {
     "url": "coineal.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897"
   },
   {
     "url": "digifinex.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897"
   },
   {
     "url": "zb.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897"
   },
   {
     "url": "coinfalcon.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "bitforex.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "idax.pro",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "bcex.ca",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "exx.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "lbank.info",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "hbg.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "bitmart.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "bitmex.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "bgogo.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "idcm.io",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "coinsuper.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   },
   {
     "url": "cointiger.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897",
   }
 ]
