@@ -387,14 +387,13 @@ browser.webRequest.onBeforeRequest.addListener(
             let stringToAttach;
             for(const site of affiliatesData){
               if(site.url == domain){
-                const refCode = site.referralCode;
-                const queryVar = site.queryVar;
 
-                // TODO: refactor
+                const queryVarValues = site.queryVarValues;
+
                 if(alreadyContainsQuestionMark){
-                  stringToAttach = `&${queryVar}=${refCode}`
+                  stringToAttach = `&${queryVarValues}`
                 } else {
-                  stringToAttach = `?${queryVar}=${refCode}`
+                  stringToAttach = `?${queryVarValues}`
                 }
               }
             }

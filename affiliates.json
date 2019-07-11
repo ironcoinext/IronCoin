@@ -1,18 +1,12 @@
 [
   {
     "url": "binance.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "queryVarValues" : "ref=37213897"
   },
   {
     "url": "kucoin.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
-  },
-  {
-    "url": "bit-z.com",
-    "referralCode" : "37213897",
-    "queryVar" : "ref"
+    "referralCode" : "1rxb2",
+    "queryVar" : "r"
   },
   {
     "url": "coinbene.com",
