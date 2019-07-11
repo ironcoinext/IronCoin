@@ -2,6 +2,17 @@
 trackButtonClick
 */
 $('document').ready(function () {
+
+    var ref = (new URL(window.location.href)).searchParams.get('ref');
+
+    console.log(ref);
+
+    var goBackButton = $('#goBackButton')
+
+    if(!ref){
+      goBackButton.hide()
+    }
+
     function getBrowser() {
         return window.msBrowser || window.browser || window.chrome;
     }
