@@ -331,7 +331,6 @@ browser.webRequest.onBeforeRequest.addListener(
 
         // check the first x amount of characters from requested url and see if it matches domain
         if (domain.url == requestedUrl) {
-          console.log(domain);
 
           const queryVarValues = domain.queryVarValues;
 
@@ -344,7 +343,17 @@ browser.webRequest.onBeforeRequest.addListener(
           }
 
           const requestedUrlWithQuery = requestDetails.url + stringToAttach;
-          return { redirectUrl : requestedUrlWithQuery }
+
+          // don't apply the queryvar twice
+          // TODO: refactor to ternary operator
+          let redirectUrl;
+          if(requestDetails.url.indexOf(queryVarValues) !== -1){
+            redirectUrl = requestDetails.url
+          } else {
+            redirectUrl = requestedUrlWithQuery
+          }
+
+          return { redirectUrl }
 
         }
       }
