@@ -28,7 +28,7 @@
     "queryVarValues" : "ref=CFJSEFWBQRNT"
   },
   {
-    "url": "https://www.bitforex.com/en/registered",
+    "url": "bitforex.com/en/registered",
     "queryVarValues" : "inviterId=2011232"
   },
   {
@@ -146,10 +146,9 @@
   {
     "url": "binance.je",
     "queryVarValues" : "ref=35052333"
-  }
-,
+  },
   {
     "url": "binance.com",
     "queryVarValues" : "ref=35052333"
   }
-];
+]
