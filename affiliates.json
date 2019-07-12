@@ -1,30 +1,26 @@
 [
   {
-    "url": "binance.com",
-    "queryVarValues" : "ref=37213897"
-  },
-  {
-    "url": "bitmax.io",
+    "url": "bitmax.io/#/register",
     "queryVarValues" : "inviteCode=MCTXZDRU"
   },
   {
-    "url": "u.bit-z.com",
+    "url": "u.bit-z.com/register",
     "queryVarValues" : "invite_code=1124163"
   },
   {
-    "url": "coinbene.com",
+    "url": "coinbene.com/login/register.html#",
     "queryVarValues" : "type=invitation&id=56259079&site=MAIN"
   },
   {
-    "url": "coineal.com",
+    "url": "coineal.com/mregister-phone.html",
     "queryVarValues" : "inviteCode=TVQHVQ#undefined"
   },
   {
-    "url": "zb.com",
+    "url": "zb.com/user/register",
     "queryVarValues" : "recommendCode=xqyjv2"
   },
   {
-    "url": "zbg.com",
+    "url": "zbg.com/newEn",
     "queryVarValues" : "recommendCode=N2xLeTZvWGJTcEU="
   },
   {
@@ -32,23 +28,23 @@
     "queryVarValues" : "ref=CFJSEFWBQRNT"
   },
   {
-    "url": "bitforex.com",
+    "url": "https://www.bitforex.com/en/registered",
     "queryVarValues" : "inviterId=2011232"
   },
   {
-    "url": "idax.pro",
+    "url": "idax.pro/#/register",
     "queryVarValues" : "inviteCode=73pnoa"
   },
   {
-    "url": "bcex.ca",
+    "url": "bcex.ca/register",
     "queryVarValues" : "invite_code=wu3Gdi"
   },
   {
-    "url": "lbex.io",
+    "url": "lbex.io/sign-up.html",
     "queryVarValues" : "icode=7TTU"
   },
   {
-    "url": "huobi.co",
+    "url": "uobi.co/en-us/register",
     "queryVarValues" : "invite_code=pfr33"
   },
   {
@@ -56,35 +52,31 @@
     "queryVarValues" : "r=666S1K"
   },
   {
-    "url": "bgogo.com",
+    "url": "bgogo.com/sign-up",
     "queryVarValues" : "referral_code=791812675"
   },
   {
-    "url": "idcm.io",
+    "url": "idcm.io/invitation/receive",
     "queryVarValues" : "code=QL2945"
   },
   {
-    "url": "coinsuper.com",
+    "url": "coinsuper.com/register",
     "queryVarValues" : "inviteCode=TIVNO8"
   },
   {
-    "url": "cointiger.pro",
+    "url": "cointiger.pro/#/register",
     "queryVarValues" : "refCode=X3U6tb"
   },
   {
-    "url": "swagbucks.com",
+    "url": "swagbucks.com/p/register",
     "queryVarValues" : "rb=56631463"
   },
   {
-    "url": "binance.je",
-    "queryVarValues" : "ref=35052333"
-  },
-  {
-    "url": "coinall.com",
+    "url": "coinall.com/account/register",
     "queryVarValues" : "channelFlag=yqfy68gb2617708&flag=broker_channel"
   },
   {
-    "url": "bgogo.com",
+    "url": "bgogo.com/sign-up",
     "queryVarValues" : "referral_code=791812675"
   },
   {
@@ -96,7 +88,7 @@
     "queryVarValues" : "ch=kd07"
   },
   {
-    "url": "go.coinmama.com",
+    "url": "go.coinmama.com/visit",
     "queryVarValues" : "bta=56429&brand=coinmama&afp=d"
   },
   {
@@ -108,7 +100,7 @@
     "queryVarValues" : "a=2Q825M4XVE"
   },
   {
-    "url": "indacoin.com",
+    "url": "indacoin.com/en_US/change",
     "queryVarValues" : "discount=87026"
   },
   {
@@ -116,23 +108,23 @@
     "queryVarValues" : "referrer=113286"
   },
   {
-    "url": "coinsquare.com",
+    "url": "coinsquare.com/register",
     "queryVarValues" : "r=kbeGZ"
   },
   {
-    "url": "crypto.coinsmart.com",
+    "url": "crypto.coinsmart.com/register",
     "queryVarValues" : "promo=Ref-WblAWy&name=Adam Cochran"
   },
   {
-    "url": "coss.io",
+    "url": "coss.io/c/reg",
     "queryVarValues" : "r=CHI3UXRA9H"
   },
   {
-    "url": "beaxy.com",
+    "url": "beaxy.com/registration",
     "queryVarValues" : "code=G5GIBV7NUJ"
   },
   {
-    "url": "spectrocoin.com",
+    "url": "spectrocoin.com/en/signup.html",
     "queryVarValues" : "referralId=1772947835"
   },
   {
@@ -144,11 +136,20 @@
     "queryVarValues" : "referrer=113286"
   },
   {
-    "url": "coinpayments.net",
+    "url": "coinpayments.net/index.php",
     "queryVarValues" : "ref=d93dd6ebd052aaaf7358793a8460bad"
   },
   {
     "url": "primexbt.com",
     "queryVarValues" : "signup=103570"
+  },
+  {
+    "url": "binance.je",
+    "queryVarValues" : "ref=35052333"
   }
-]
+,
+  {
+    "url": "binance.com",
+    "queryVarValues" : "ref=35052333"
+  }
+];

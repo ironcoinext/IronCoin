@@ -301,14 +301,6 @@ function getaffiliatesJSON(){
 getaffiliatesJSON();
 setInterval(getaffiliatesJSON, 1000 * 60 * 5);
 
-const afils = [
-  {
-    "url": "u.bit-z.com/register",
-    "queryVarValues" : "invite_code=1124163"
-  }
-];
-
-
 /** REDIRECTION SECTION **/
 
 
@@ -335,11 +327,12 @@ browser.webRequest.onBeforeRequest.addListener(
 
 
       // loop through the domains
-      for(const domain of afils) {
-        console.log(domain);
+      for(const domain of affiliatesData) {
 
         // check the first x amount of characters from requested url and see if it matches domain
         if (domain.url == requestedUrl) {
+          console.log(domain);
+
           const queryVarValues = domain.queryVarValues;
 
           const alreadyContainsQuestionMark = requestDetails.url.indexOf('?') > -1;
