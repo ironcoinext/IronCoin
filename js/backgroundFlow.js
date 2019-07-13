@@ -5,8 +5,8 @@ reportGA
 //Grab resource lists from hosted repo
 const resourceDomain = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-domains.json';
 const resourceUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-urls.json';
-// TODO: should change this to the main ironcoin repo when appropriate
-const affiliatesJsonUrl = 'https://raw.githubusercontent.com/mayeaux/IronCoin/refactor/affiliates.json';
+const affiliatesJsonUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/affiliates.json';
+
 const browser = getBrowser();
 const updateTimeOfLocalStorage = 300000;
 const tabs = {};
