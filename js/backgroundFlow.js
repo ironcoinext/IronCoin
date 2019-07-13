@@ -180,7 +180,14 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-let whitelistedDomains = ['archive.org', 'amazonaws.com'];
+
+// initiate localStorage if it doesn't exist
+if(localStorage.getItem('whitelistedDomains') == null){
+  localStorage.setItem('whitelistedDomains', '[]');
+} else {
+  console.log('Whitelisted Domains:')
+  console.log(JSON.parse(localStorage.getItem('whitelistedDomains')))
+}
 
 /** BLOCKING NAVIGATION SECTION **/
 browser.webRequest.onBeforeRequest.addListener(
@@ -189,9 +196,11 @@ browser.webRequest.onBeforeRequest.addListener(
           updateTabDetails(requestDetails);
           const tabId = requestDetails.tabId;
 
+          var whitelistedDomainsArray = JSON.parse(localStorage.getItem('whitelistedDomains'));
+
 
           let urlAPI = new URL(requestDetails.url);
-          console.log(urlAPI.origin);
+          // console.log(urlAPI.origin);
 
           let domainName = urlAPI.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
 
@@ -199,11 +208,11 @@ browser.webRequest.onBeforeRequest.addListener(
             domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
           }
 
-          console.log(domainName)
+          // console.log(domainName)
 
-          const alreadyWhitelisted = whitelistedDomains.includes(domainName);
+          const alreadyWhitelisted = whitelistedDomainsArray.includes(domainName);
 
-          console.log(`already whiteslited ${alreadyWhitelisted}`)
+          // console.log(`already whiteslited ${alreadyWhitelisted}`)
 
           if(alreadyWhitelisted){
             continueToSite(tabId);
@@ -214,10 +223,15 @@ browser.webRequest.onBeforeRequest.addListener(
           const addToWhiteList = getParameterByName('addToIronCoinWhiteList', requestDetails.url);
 
           if(addToWhiteList){
-            console.log('YESS here');
             // manipulate localstorage
 
-            whitelistedDomains.push(domainName);
+            // TODO save in localstorage
+
+            whitelistedDomainsArray.push(domainName);
+
+            localStorage.setItem('whitelistedDomains', JSON.stringify(whitelistedDomainsArray));
+
+
             continueToSite(tabId);
             return {cancel: false};
           }
@@ -226,8 +240,6 @@ browser.webRequest.onBeforeRequest.addListener(
 
           lastTab = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
             '&ref=' + tabs[tabId].prevTab;
-
-          // TODO: check if site is in localStorage whitelist, if it is then
 
           // Validation if the path is in the whitelist of the tab
           if (isMaliciousTabUnderRisk(tabId)) {
@@ -370,7 +382,7 @@ browser.webRequest.onBeforeRequest.addListener(
 
       var stringToAttach;
 
-      console.log(requestedUrl);
+      // console.log(requestedUrl);
 
 
       // loop through the domains
