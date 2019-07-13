@@ -18,7 +18,16 @@ $('document').ready(function () {
     }
 
     function addLinksToText(result) {
-        document.getElementById('phishing_sitename').innerText = result.url;
+
+        let urlAPI = new URL(result.url);
+
+        let domainName = urlAPI.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+
+        if(domainName.match(/[^\.]*\.[^.]*$/)){
+          domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
+        }
+
+        document.getElementById('phishing_sitename').innerText = domainName;
         let ignoreButton = document.getElementById('ignore_warning_link');
         ignoreButton.href = result.url;
 
