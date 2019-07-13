@@ -193,50 +193,46 @@ if(localStorage.getItem('whitelistedDomains') == null){
 browser.webRequest.onBeforeRequest.addListener(
     (requestDetails) => {
         if (requestDetails.tabId >= 0) {
+
+
           updateTabDetails(requestDetails);
           const tabId = requestDetails.tabId;
 
+          // get whitelisted from localstorage
           var whitelistedDomainsArray = JSON.parse(localStorage.getItem('whitelistedDomains'));
 
+          // get domain name from url
+          let domainName = new URL(requestDetails.url).origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
 
-          let urlAPI = new URL(requestDetails.url);
-          // console.log(urlAPI.origin);
-
-          let domainName = urlAPI.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
-
+          // remove subdomains if exist
           if(domainName.match(/[^\.]*\.[^.]*$/)){
             domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
           }
 
-          // console.log(domainName)
-
+          // check if already whitelisted
           const alreadyWhitelisted = whitelistedDomainsArray.includes(domainName);
 
-          // console.log(`already whiteslited ${alreadyWhitelisted}`)
-
+          // send to requested url if whitelisted
           if(alreadyWhitelisted){
             continueToSite(tabId);
             return {cancel: false};
           }
 
-
+          // detect if there is an instruction to add to whitelist
           const addToWhiteList = getParameterByName('addToIronCoinWhiteList', requestDetails.url);
 
+          // add to whitelist if necessary
           if(addToWhiteList){
-            // manipulate localstorage
 
-            // TODO save in localstorage
-
+            // use whitelist domains from earlier in function
             whitelistedDomainsArray.push(domainName);
 
+            // set the updated whitelisted domains
             localStorage.setItem('whitelistedDomains', JSON.stringify(whitelistedDomainsArray));
-
 
             continueToSite(tabId);
             return {cancel: false};
           }
-
-
 
           lastTab = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
             '&ref=' + tabs[tabId].prevTab;

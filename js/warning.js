@@ -19,9 +19,8 @@ $('document').ready(function () {
 
     function addLinksToText(result) {
 
-        let urlAPI = new URL(result.url);
-
-        let domainName = urlAPI.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+        // get domain from url
+        let domainName = new URL(result.url);.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
 
         if(domainName.match(/[^\.]*\.[^.]*$/)){
           domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
@@ -31,6 +30,7 @@ $('document').ready(function () {
         let ignoreButton = document.getElementById('ignore_warning_link');
         ignoreButton.href = result.url;
 
+        // add whitelist url
         var ignoreWarningWithWhiteListAnchor = document.getElementById('ignore_warning_link_with_whitelist');
         var urlWithWhiteList = result.url += (result.url.split('?')[1] ? '&':'?') + 'addToIronCoinWhiteList=true';
         ignoreWarningWithWhiteListAnchor.href = urlWithWhiteList;
@@ -66,18 +66,6 @@ $('document').ready(function () {
             let seeDetButton = document.getElementById('seeDetailsButton');
 
           addLinksToText(result);
-
-
-
-            // seeDetButton.addEventListener('click', function (event) {
-            //     let setting = document.getElementById('errorDescriptionContainer');
-            //     setting.hidden = !setting.hidden;
-            //     if (!setting.hidden) {
-            //         document.getElementById('errorLongDesc_phishing').scrollIntoView();
-            //         addLinksToText(result);
-            //     }
-            //     trackButtonClick('Buttons', 'click', event);
-            // });
         }
     }
 
