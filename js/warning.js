@@ -20,7 +20,7 @@ $('document').ready(function () {
     function addLinksToText(result) {
 
         // get domain from url
-        let domainName = new URL(result.url);.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+        let domainName = new URL(result.url).origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
 
         if(domainName.match(/[^\.]*\.[^.]*$/)){
           domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
