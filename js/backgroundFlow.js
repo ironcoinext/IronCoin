@@ -180,7 +180,7 @@ function getParameterByName(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-const whitelistedDomains = ['archive.org', 'amazonaws.com', 'angelfire.com'];
+let whitelistedDomains = ['archive.org', 'amazonaws.com'];
 
 /** BLOCKING NAVIGATION SECTION **/
 browser.webRequest.onBeforeRequest.addListener(
@@ -216,6 +216,10 @@ browser.webRequest.onBeforeRequest.addListener(
           if(addToWhiteList){
             console.log('YESS here');
             // manipulate localstorage
+
+            whitelistedDomains.push(domainName);
+            continueToSite(tabId);
+            return {cancel: false};
           }
 
 
