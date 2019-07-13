@@ -170,17 +170,60 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   sendResponse({});
 });
 
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+const whitelistedDomains = ['archive.org', 'amazonaws.com', 'angelfire.com'];
+
 /** BLOCKING NAVIGATION SECTION **/
 browser.webRequest.onBeforeRequest.addListener(
     (requestDetails) => {
         if (requestDetails.tabId >= 0) {
-
-
           updateTabDetails(requestDetails);
           const tabId = requestDetails.tabId;
 
+
+          let urlAPI = new URL(requestDetails.url);
+          console.log(urlAPI.origin);
+
+          let domainName = urlAPI.origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+
+          if(domainName.match(/[^\.]*\.[^.]*$/)){
+            domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
+          }
+
+          console.log(domainName)
+
+          const alreadyWhitelisted = whitelistedDomains.includes(domainName);
+
+          console.log(`already whiteslited ${alreadyWhitelisted}`)
+
+          if(alreadyWhitelisted){
+            continueToSite(tabId);
+            return {cancel: false};
+          }
+
+
+          const addToWhiteList = getParameterByName('addToIronCoinWhiteList', requestDetails.url);
+
+          if(addToWhiteList){
+            console.log('YESS here');
+            // manipulate localstorage
+          }
+
+
+
           lastTab = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
             '&ref=' + tabs[tabId].prevTab;
+
+          // TODO: check if site is in localStorage whitelist, if it is then
 
           // Validation if the path is in the whitelist of the tab
           if (isMaliciousTabUnderRisk(tabId)) {

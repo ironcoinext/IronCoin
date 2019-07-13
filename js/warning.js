@@ -22,7 +22,14 @@ $('document').ready(function () {
         let ignoreButton = document.getElementById('ignore_warning_link');
         ignoreButton.href = result.url;
 
-        let reportLink = document.getElementById('report_detection');
+        var ignoreWarningWithWhiteListAnchor = document.getElementById('ignore_warning_link_with_whitelist');
+        var urlWithWhiteList = result.url += (result.url.split('?')[1] ? '&':'?') + 'addToIronCoinWhiteList=true';
+        ignoreWarningWithWhiteListAnchor.href = urlWithWhiteList;
+
+
+
+
+      let reportLink = document.getElementById('report_detection');
         reportLink.href = 'mailto:review@ironcoin.app?subject=Request review for ' + result.url +
             '&body=Hi,\nI found this ' + result.url + ' site was blocked due to Phishing suspicion.\n' +
             'I believe this site was wrongfully blocked, please review it again.\n';
@@ -31,6 +38,7 @@ $('document').ready(function () {
             trackButtonClick('Buttons', 'click', event);
         });
 
+        // update ignoreRiskPressed variable in extension, used for a whitelist
         ignoreButton.addEventListener('click', function (event) {
             browser.runtime.sendMessage({ignoreRiskButton: true}, () => {
             });
