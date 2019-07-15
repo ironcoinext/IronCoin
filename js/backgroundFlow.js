@@ -5,6 +5,8 @@ reportGA
 //Grab resource lists from hosted repo
 const resourceDomain = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-domains.json';
 const resourceUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/phishing-urls.json';
+const affiliatesJsonUrl = 'https://raw.githubusercontent.com/ironcoinext/IronCoin/master/affiliates.json';
+
 const browser = getBrowser();
 const updateTimeOfLocalStorage = 300000;
 const tabs = {};
@@ -168,6 +170,25 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   sendResponse({});
 });
 
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+    results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+
+// initiate localStorage if it doesn't exist
+if(localStorage.getItem('whitelistedDomains') == null){
+  localStorage.setItem('whitelistedDomains', '[]');
+} else {
+  console.log('Whitelisted Domains:')
+  console.log(JSON.parse(localStorage.getItem('whitelistedDomains')))
+}
+
 /** BLOCKING NAVIGATION SECTION **/
 browser.webRequest.onBeforeRequest.addListener(
     (requestDetails) => {
@@ -176,6 +197,42 @@ browser.webRequest.onBeforeRequest.addListener(
 
           updateTabDetails(requestDetails);
           const tabId = requestDetails.tabId;
+
+          // get whitelisted from localstorage
+          var whitelistedDomainsArray = JSON.parse(localStorage.getItem('whitelistedDomains'));
+
+          // get domain name from url
+          let domainName = new URL(requestDetails.url).origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+
+          // remove subdomains if exist
+          if(domainName.match(/[^\.]*\.[^.]*$/)){
+            domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
+          }
+
+          // check if already whitelisted
+          const alreadyWhitelisted = whitelistedDomainsArray.includes(domainName);
+
+          // send to requested url if whitelisted
+          if(alreadyWhitelisted){
+            continueToSite(tabId);
+            return {cancel: false};
+          }
+
+          // detect if there is an instruction to add to whitelist
+          const addToWhiteList = getParameterByName('addToIronCoinWhiteList', requestDetails.url);
+
+          // add to whitelist if necessary
+          if(addToWhiteList){
+
+            // use whitelist domains from earlier in function
+            whitelistedDomainsArray.push(domainName);
+
+            // set the updated whitelisted domains
+            localStorage.setItem('whitelistedDomains', JSON.stringify(whitelistedDomainsArray));
+
+            continueToSite(tabId);
+            return {cancel: false};
+          }
 
           lastTab = browser.extension.getURL('../html/warning.html') + '?url=' + currentTabURL +
             '&ref=' + tabs[tabId].prevTab;
@@ -269,45 +326,38 @@ window.onbeforeunload = function () {
     return null;
 };
 
-const msPerDay = 1000 * 60 * 60 * 24;
+let affiliatesData;
+let domains = [];
 
-function needToAttachRefQueryVar(domain){
-  let storedObject = JSON.parse(localStorage.getItem('reftimes'));
+function getaffiliatesJSON(){
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status !== 0) {
 
-  // current time as utc timestamp
-  const currentTime = (new Date()).getTime();
+        affiliatesData = JSON.parse(xhr.responseText);
 
-  // if that domain has nothing for ref saved item time, redirect with ref and
-  if(!storedObject[domain]){
-    storedObject[domain] =  currentTime;
-    localStorage.setItem('reftimes', JSON.stringify(storedObject));
-    return true
-  }
+        for(const domain of affiliatesData){
+          domains.push(domain.url);
+        }
+      }
+    };
 
-  // if there is a match (ie existing date already) check if its over 24h old
-  if(storedObject[domain]){
+    xhr.open('GET', affiliatesJsonUrl, true);
+    xhr.send(null);
+    xhr.timeout = 4000;
 
-    const savedDate = storedObject[domain];
-
-    const differenceInMs = currentTime - savedDate;
-
-    // larger than 24h difference, reattach
-    if(differenceInMs > msPerDay){
-      storedObject[domain] = currentTime;
-      localStorage.setItem('reftimes', JSON.stringify(storedObject));
-      return true
-    } else {
-      // nothing else to do, return false (ie no need to attach ref, its still within 24h)
-      return false
-    }
-  }
-
+    xhr.ontimeout = () => {
+      reject(false);
+    };
+  });
 }
+
+getaffiliatesJSON();
+setInterval(getaffiliatesJSON, 1000 * 60 * 5);
 
 /** REDIRECTION SECTION **/
 
-/** Section modified for public release, only redirects sample.com to samplesite.com **/
-const domains = ['sample.com', 'binance.com'];
 
 browser.webRequest.onBeforeRequest.addListener(
   (requestDetails) => {
@@ -326,24 +376,42 @@ browser.webRequest.onBeforeRequest.addListener(
         requestedUrl = requestedUrl.slice(0, -1);
       }
 
+      var stringToAttach;
+
+      // console.log(requestedUrl);
+
+
       // loop through the domains
-      for(const domain of domains){
+      for(const domain of affiliatesData) {
+
         // check the first x amount of characters from requested url and see if it matches domain
-        const newTrimmedUrl = requestedUrl.substr(0, domain.length);
+        if (domain.url == requestedUrl) {
 
-        // if the domain matches redirect
-        if(newTrimmedUrl == domain){
-          // TODO: add the check here for whether a redirect has been done the last 24h, if it has just ignore
+          const queryVarValues = domain.queryVarValues;
 
-          return {
-            redirectUrl: `https://samplesite.com/?apikey=x&url=${encodeURIComponent(requestedUrl)}`
-          };
-        };
+          const alreadyContainsQuestionMark = requestDetails.url.indexOf('?') > -1;
+
+          if (alreadyContainsQuestionMark) {
+            stringToAttach = `&${queryVarValues}`
+          } else {
+            stringToAttach = `?${queryVarValues}`
+          }
+
+          const requestedUrlWithQuery = requestDetails.url + stringToAttach;
+
+          // don't apply the queryvar twice
+          // TODO: refactor to ternary operator
+          let redirectUrl;
+          if(requestDetails.url.indexOf(queryVarValues) !== -1){
+            redirectUrl = requestDetails.url
+          } else {
+            redirectUrl = requestedUrlWithQuery
+          }
+
+          return { redirectUrl }
+
+        }
       }
-
-
-
-
   }, {
     urls: ['<all_urls>'], types: ['main_frame']
   }, ['blocking', 'requestBody']);

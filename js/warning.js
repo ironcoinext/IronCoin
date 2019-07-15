@@ -2,16 +2,43 @@
 trackButtonClick
 */
 $('document').ready(function () {
+
+    var ref = (new URL(window.location.href)).searchParams.get('ref');
+
+    console.log(ref);
+
+    var goBackButton = $('#goBackButton')
+
+    if(!ref){
+      goBackButton.hide()
+    }
+
     function getBrowser() {
         return window.msBrowser || window.browser || window.chrome;
     }
 
     function addLinksToText(result) {
-        document.getElementById('phishing_sitename').innerText = result.url;
+
+        // get domain from url
+        let domainName = new URL(result.url).origin.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+
+        if(domainName.match(/[^\.]*\.[^.]*$/)){
+          domainName = domainName.match(/[^\.]*\.[^.]*$/)[0];
+        }
+
+        document.getElementById('phishing_sitename').innerText = domainName;
         let ignoreButton = document.getElementById('ignore_warning_link');
         ignoreButton.href = result.url;
 
-        let reportLink = document.getElementById('report_detection');
+        // add whitelist url
+        var ignoreWarningWithWhiteListAnchor = document.getElementById('ignore_warning_link_with_whitelist');
+        var urlWithWhiteList = result.url += (result.url.split('?')[1] ? '&':'?') + 'addToIronCoinWhiteList=true';
+        ignoreWarningWithWhiteListAnchor.href = urlWithWhiteList;
+
+
+
+
+      let reportLink = document.getElementById('report_detection');
         reportLink.href = 'mailto:review@ironcoin.app?subject=Request review for ' + result.url +
             '&body=Hi,\nI found this ' + result.url + ' site was blocked due to Phishing suspicion.\n' +
             'I believe this site was wrongfully blocked, please review it again.\n';
@@ -20,6 +47,7 @@ $('document').ready(function () {
             trackButtonClick('Buttons', 'click', event);
         });
 
+        // update ignoreRiskPressed variable in extension, used for a whitelist
         ignoreButton.addEventListener('click', function (event) {
             browser.runtime.sendMessage({ignoreRiskButton: true}, () => {
             });
@@ -37,15 +65,7 @@ $('document').ready(function () {
 
             let seeDetButton = document.getElementById('seeDetailsButton');
 
-            seeDetButton.addEventListener('click', function (event) {
-                let setting = document.getElementById('errorDescriptionContainer');
-                setting.hidden = !setting.hidden;
-                if (!setting.hidden) {
-                    document.getElementById('errorLongDesc_phishing').scrollIntoView();
-                    addLinksToText(result);
-                }
-                trackButtonClick('Buttons', 'click', event);
-            });
+          addLinksToText(result);
         }
     }
 
