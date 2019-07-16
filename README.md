@@ -86,6 +86,12 @@ We currently run the OneSignal SDK, and a Google Analytics event SDK, both of th
 
 Beyond that, IronCoin does not transmit any data back to their own servers, or record information about users.
 
+# Whitelisting
+
+The blocking in IronCoin is **very** aggressive and as such will occassionally block legitimate sites that you wish to access. In this case you are able to add the site to your own personal whitelist either from the red block screen or from the drop down menu.
+
+This whitelist is stored locally on your computer in the systems local storage in order to ensure you are not communicating with a remote system. This means if you frequently clear browser settings, cookies, etc you may need to restart your whitelist.
+
 # How Can I Add/Remove Sites From The List?
 
 If you've discovered a site that should be added or removed from our list, please open up an issue on GitHub for us to review.
