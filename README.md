@@ -35,10 +35,12 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 * Implement Gitcoin to reward contributions.
 * Add support to block crypto mining.
 * Add support to validate SSL check.
+* Support for Firefox, Safari and Edge.
 * Add support for anti-phishing images.
 * Add support for wallet safelist.
 * Add support to detect and block clipboard hijacking and manipulation.
 * Add ML for detecting new scam sites based on common behavior.
+
 
 # Who Created IronCoin?
 [Redditor AdamSC1](https://old.reddit.com/user/AdamSC1/) who is a moderator of Reddit's [/r/cryptocurrency](http://old.reddit.com/r/cryptocurrency) and [/r/EthTrader](http://old.reddit.com/r/ethtrader). These subreddits have had more than 10M+ unique monthly visitors at their peak, and are often innundated with crypto scams. While the teams use manual moderation and tools like Reddit's AutoMod to keep scams at bay, Adam wanted to find a way to extend user protection across the web.
@@ -54,15 +56,26 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 # Is IronCoin Monetized?
 Yes.
 
-IronCoin is free and open source. But, our commercial release on Chrome's extension store does include affiliate monetization. For a very limited number of sites, where we detect the user is going to the authentic site, we'll direct the link through an affilate redirect system which adds a referral code to the link. The user will then be directed to the site.
+IronCoin is free and open source. But, to support the cost of servers, team development and the constant update of new blocking URLs IronCoin does include monetization.
 
-This redirect is handled by [SprigAds](https://www.sprigads.com) a privacy focused affiliate network that does not store user information on redirect.
+Currently, if you visit a cryptocurrency site that:
+
+* Has a referral program.
+* The referral program does not detract from you as the user.
+* You do not have a referral link.
+* You go to their sign-up page.
+
+We'll add in our own referral link so that you can help support the development of this extension. The IronCoin logo will change color and you can click on it to see a drop down when this happens.
+
+The referral programs do not impact prices you pay at thes services, in fact, in a few instances being referred will provide you with a bonus.
+
+The re-writing of the URL happens on the client side of the extension, so that no information is sent to IronCoin servers and you are not being redirected so you can ensure that you are still secure and going to the authentic site.
 
 In the future, we may also consider monetizing a limited number of news alerts, so long as they are limited, and high-quality.
 
 The proceeds of monetization will go directly to funding further development of this project.
 
-If users wish to not have any monetization in the exchange, they can download and install the source code correctly. But, that version of the extension will run without live time alerts, or future updates.
+If users wish to not have any monetization in the exchange, they can download and install the source code correctly, while disabling the affiliate redirect. But, that version of the extension will run without live time alerts, or future updates.
 
 
 # Privacy
