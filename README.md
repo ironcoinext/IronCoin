@@ -1,18 +1,16 @@
 # IronCoin
 IronCoin is a crypto security extension which detects phishing, puny code attacks, and hijacking attempts. It helps to prevent scams and malicious attacks by validating the authenticity of sites and flagging sites with malicious practices. It also provides news alerts related to crypto security events.
 
-Ongoing development and support is funded through GitCoin bounties, rewarding developers with Ethereum or DAI for contributing to open source projects.
+[<img src="https://i.imgur.com/MceLWP4.png" width="200">](https://gitcoin.co/profile/ironcoinext)
 
-[![GitCoin](https://i.imgur.com/MceLWP4.png | width=100)](https://gitcoin.co/profile/ironcoinext)
-
-IronCoin is developed using GitCoin. IronCoin funds bounties for open-source developers, to help make high-quality software free and available to everyone. Check out our [current issues](https://github.com/ironcoinext/IronCoin/issues) to earn bounties paid in ETH.
+Ongoing development of IronCoin is funded using GitCoin. IronCoin funds bounties for open-source developers, to help make high-quality software free and available to everyone. Check out our [current issues](https://github.com/ironcoinext/IronCoin/issues) to earn bounties paid in ETH.
 
 # Download:
-[![Download for Chrome](https://i.imgur.com/s4jieZv.png | width=100)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+[<img src="https://i.imgur.com/s4jieZv.png" width="250">](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
 [Download for Chrome via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
-[![Download for Brave](https://i.imgur.com/ccYajgx.jpg | width=100)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+[<img src="https://i.imgur.com/ccYajgx.jpg" width="250">](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
 [Download for Brave via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
