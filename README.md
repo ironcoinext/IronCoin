@@ -56,7 +56,7 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 2. We provide permission to google-analytics.com to record interaction events with our app, to better understand how users are using the app.
 3. We request access to the 'storage' permission in order to store a local whitelist on your computer, this way no information needs to go back to the cloud.
 4. We request the 'gcm' 'notifications' and 'identity' APIs for Chrome Extensions in order to power our notification messaging system which is run in Firebase and OneSignal. This allows users to get real time notifications.
-5. We request the 'certificateProvider' API, although it is not yet in use. This will be used to check the validity of certificates in future releases.
+5. We request the 'certificateProvider' API, although it is not yet in use. This will be used to check the validity of certificates in future releases. (Note: Due to changes in browser security policies for extensions we will likely be removing this feature.)
 
 # Is IronCoin Monetized?
 Yes.
