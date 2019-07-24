@@ -41,7 +41,7 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 14. Crypto referral scams.
 
 # Planned Updates:
-* Implement Gitcoin to reward contributions.
+* ~~Implement Gitcoin to reward contributions.~~ (Completed!)
 * Add support to block crypto mining.
 * Add support to validate SSL check.
 * Support for Firefox, Safari and Edge.
