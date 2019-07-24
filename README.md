@@ -3,6 +3,10 @@ IronCoin is a crypto security extension which detects phishing, puny code attack
 
 Ongoing development and support is funded through GitCoin bounties, rewarding developers with Ethereum or DAI for contributing to open source projects.
 
+[!GitCoin(https://i.imgur.com/MceLWP4.png)](https://gitcoin.co/profile/ironcoinext)
+
+IronCoin is developed using GitCoin. IronCoin funds bounties for open-source developers, to help make high-quality software free and available to everyone. Check out our [current issues](https://github.com/ironcoinext/IronCoin/issues) to earn bounties paid in ETH.
+
 # Download:
 [![Download for Chrome](https://i.imgur.com/s4jieZv.png)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
