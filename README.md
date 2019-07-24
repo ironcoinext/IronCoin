@@ -45,7 +45,7 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 * Add support to block crypto mining.
 * Add support to validate SSL check.
 * Support for Firefox, Safari and Edge.
-* Add support for anti-phishing images.
+* Add support for anti-phishing phrases.
 * Add support for wallet safelist.
 * Add support to detect and block clipboard hijacking and manipulation.
 * Add ML for detecting new scam sites based on common behavior.
