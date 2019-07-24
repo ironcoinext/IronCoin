@@ -4,8 +4,11 @@ IronCoin is a crypto security extension which detects phishing, puny code attack
 Ongoing development and support is funded through GitCoin bounties, rewarding developers with Ethereum or DAI for contributing to open source projects.
 
 # Download:
-[![Download for Chrome](https://i.imgur.com/s4jieZv.png)](https://test.com)
-[![Download for Brave](https://i.imgur.com/ccYajgx.jpg)](https://test.com)
+[![Download for Chrome](https://i.imgur.com/s4jieZv.png)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+[Download for Chrome via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+
+[![Download for Brave](https://i.imgur.com/ccYajgx.jpg)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+[Download for Brave via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
 
 # Current Stats:
