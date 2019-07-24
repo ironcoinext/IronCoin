@@ -5,9 +5,11 @@ Ongoing development and support is funded through GitCoin bounties, rewarding de
 
 # Download:
 [![Download for Chrome](https://i.imgur.com/s4jieZv.png)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+
 [Download for Chrome via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
 [![Download for Brave](https://i.imgur.com/ccYajgx.jpg)](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
+
 [Download for Brave via Chrome Webstore](https://chrome.google.com/webstore/detail/ironcoin-anti-phishing/mdefodjgmpaldjlhjndagkoiobblbhkh)
 
 
