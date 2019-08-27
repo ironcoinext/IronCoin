@@ -25,18 +25,18 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 
 # What We Block Right Now:
 
-1. Phishing Domains
-2. Puny Code Domains.
+1. Crypto Phishing Domains
+2. Crypto Puny Code Domains.
 3. Sites attempting reflexive XSS attacks on cryptosites.
-4. Sites that can be used to execute malicious code.
-5. Sites that attempt to exploit unlocked wallets.
+4. Crypto Sites that can be used to execute malicious code.
+5. Crypto Sites that attempt to exploit unlocked wallets.
 6. Crypto scams.
 7. Crypto related malware.
 8. Pump and Dump scams.
 9. Fake crypto exchanges.
 10. Fake crypto software (such as fake 'official' wallets).
 11. Wallet generates that are known to have weak randomness.
-12. News/Viral link spam sites.
+12. Crypto News/Viral link spam sites.
 13. Crypto MLM scams.
 14. Crypto referral scams.
 
