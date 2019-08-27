@@ -42,8 +42,6 @@ We'll also send real time alerts of major security news in the cryptocurrency sp
 
 # Planned Updates:
 * ~~Implement Gitcoin to reward contributions.~~ (Completed!)
-* Add support to block crypto mining.
-* Add support to validate SSL check.
 * Support for Firefox, Safari and Edge.
 * Add support for anti-phishing phrases.
 * Add support for wallet safelist.
