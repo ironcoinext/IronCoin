@@ -6,7 +6,7 @@
   "version": "1.0",
   "author": "IronCoin",
   "background": {
-  "scripts": ["js/OneSignal.js", "js/backgroundflow.js", "js/googleAnalytics.js"]
+  "scripts": ["js/OneSignal.js", "js/backgroundFlow.js", "js/googleAnalytics.js"]
 },
   "browser_action": {
     "default_icon": "icons/icon_green.png",
